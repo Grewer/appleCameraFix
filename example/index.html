@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>example</title>
+</head>
+
+<body>
+    <input type="file" name="upload" onchange="change(this)" id="upload">
+    <canvas id="canvas"></canvas>
+</body>
+<script type="text/javascript" src="../cameraRepair.js"></script>
+<script type="text/javascript">
+function change(e) {
+    console.log(e.files[0]);
+    var img = e.files[0];
+
+
+	CameraRepair(img)
+}
+
+
+
+</script>
+
+</html>
