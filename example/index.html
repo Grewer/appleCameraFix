@@ -4,21 +4,33 @@
 <head>
     <title>example</title>
 </head>
-
+<style>
+    img{
+        max-width: 900px;
+        max-height: 900px;
+    }
+</style>
 <body>
-    <input type="file" name="upload" onchange="change(this)" id="upload">
-    <canvas id="canvas"></canvas>
+<input type="file" name="upload" onchange="change(this)" id="upload">
+<div style="margin:20px">Original Pic:<img src="#" id="origin" alt="Original"></div>
+<div style="margin:20px">Modified Pic:<img src="#" alt="Modified" id="Modified"></div>
 </body>
 <script type="text/javascript" src="../cameraRepair.js"></script>
 <script type="text/javascript">
-function change(e) {
-    console.log(e.files[0]);
-    var img = e.files[0];
+    var Modified = document.getElementById('Modified');
+    var origin = document.getElementById('origin');
 
-
-	CameraRepair(img)
-}
-
+    function change(e) {
+        var img = e.files[0];
+        var Reader = new FileReader;
+        Reader.onload = function (ev) {
+            origin.setAttribute('src', ev.target.result)
+        };
+        Reader.readAsDataURL(img);
+        CameraRepair(img, function (file) {
+            Modified.setAttribute('src', file)
+        })
+    }
 
 
 </script>

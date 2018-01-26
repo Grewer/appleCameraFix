@@ -1,12 +1,11 @@
-(function() {
+(function () {
 
-    var canvas = document.getElementById('canvas');
-    var ctx = canvas.getContext('2d');//test
-
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
 
     function getOrientation(file, callback) {
         var reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             var view = new DataView(e.target.result);
             if (view.getUint16(0, false) != 0xFFD8) return callback(-2);
             var length = view.byteLength,
@@ -32,68 +31,87 @@
     }
 
     function cameraRepair(img) {
-    	//判断一下是否为 iPhone; if (navigator.userAgent.match(/iphone/i)) {}
-        getOrientation(img, function(orientation) {
-            console.log(orientation)
-            if (orientation === -1) {
-            	//未有exif 值
-            	//返回正常值
-            } else if (orientation === -2) {
-            	//不是 JPG 格式
-            	//返回正常值
-            } else {
-            	//可换
-                var Reader = new FileReader();
-                Reader.onload = function(e) {
-                    var image = new Image();
-                    image.src = e.target.result;
-                    image.onload = function() {
-                        var naturalWidth = image.width,
+        var isFile = false,
+            call = function () {
+            };
+        if (checkIsFunc(arguments[1])) {
+            call = arguments[1];
+        } else if (typeof arguments[1] === 'boolean') {
+            isFile = !!arguments[1];
+            if (checkIsFunc(arguments[2])) {
+                call = arguments[2];
+            }
+        }
+        getOrientation(img, function (orientation) {
+            if (orientation === -2) {
+                return console.error('The first parameter must be a picture');
+            }
+            var Reader = new FileReader();
+            Reader.onload = function (e) {
+                var image = new Image();
+                image.src = e.target.result;
+                image.onload = function () {
+                    var naturalWidth = image.width,
                         naturalHeight = image.height,
                         expectWidth,
                         expectHeight;
-                        if (naturalWidth > naturalHeight && naturalWidth > 800) {
-                                expectWidth = 400;
-                                expectHeight = expectWidth * naturalHeight / naturalWidth;
-                            } else if (naturalHeight > naturalWidth && naturalHeight > 1200) {
-                                expectHeight = 600;
-                                expectWidth = expectHeight * naturalWidth / naturalHeight;
-                            }
-                        canvas.width = expectWidth;
-                        canvas.height = expectHeight;
-
-                        ctx.drawImage(image, 0, 0, expectWidth, expectHeight);
-                        //orientation  1 不用变化  6 顺时针90度 3 180度  8 逆时针90度
-
-                        // ctx.translate(expectWidth / 2, expectHeight / 2);//设置画布上的(0,0)位置，也就是旋转的中心点
-
-
-                        // 6
-                        // canvas.width = expectHeight;
-                        // canvas.height = expectWidth;
-                        // ctx.rotate(90 * Math.PI / 180);//把画布旋转90度
-                        // ctx.drawImage(image, 0, -expectHeight,expectWidth, expectHeight);
-                        //TODO
-
+                    if (naturalWidth > naturalHeight && naturalWidth > 800) {
+                        expectWidth = 400;
+                        expectHeight = expectWidth * naturalHeight / naturalWidth;
+                    } else if (naturalHeight > naturalWidth && naturalHeight > 1200) {
+                        expectHeight = 600;
+                        expectWidth = expectHeight * naturalWidth / naturalHeight;
+                    } else {
+                        expectWidth = naturalWidth;
+                        expectHeight = naturalHeight;
                     }
+                    canvas.width = expectWidth;
+                    canvas.height = expectHeight;
+                    switch (orientation) {
+                        case 3:
+                            ctx.rotate(180 * Math.PI / 180);
+                            ctx.drawImage(image, -expectWidth, -expectHeight, expectWidth, expectHeight);
+                            break;
+                        case 6:
+                            canvas.width = expectHeight;
+                            canvas.height = expectWidth;
+                            ctx.rotate(90 * Math.PI / 180);//把画布顺时针旋转90度
+                            ctx.drawImage(image, 0, -expectHeight, expectWidth, expectHeight);
+                            break;
+                        case 8:
+                            canvas.width = expectHeight;
+                            canvas.height = expectWidth;
+                            ctx.rotate(270 * Math.PI / 180);//把画布顺时针旋转270度
+                            ctx.drawImage(image, -expectWidth, 0, expectWidth, expectHeight);
+                            break;
+                        default:
+                            ctx.drawImage(image, 0, 0, expectWidth, expectHeight);
+                    }
+                    var base64 = canvas.toDataURL("image/jpeg", 0.8);
+                    call(isFile ? dataURLToBlob(base64) : base64);
+                }
 
 
-                };
-                Reader.readAsDataURL(img);
-            }
+            };
+            Reader.readAsDataURL(img);
+
         })
-
 
     }
 
+    function checkIsFunc(obj) {
+        return Object.prototype.toString.call(obj) === '[object Function]'
+    }
 
+    function dataURLToBlob(dataurl) {
+        var bstr = atob(dataurl.split(',')[1]);
+        var n = bstr.length;
+        var u8arr = new Uint8Array(n);
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new Blob([u8arr], {type: 'image/jpeg'});
+    }
 
-    // cameraRepair.getFile = function() {
-
-    // };
-
-    // cameraRepair.getDataUrl = function() {
-
-    // };
     window.CameraRepair = cameraRepair;
 })();
