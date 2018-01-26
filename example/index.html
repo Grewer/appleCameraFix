@@ -5,31 +5,59 @@
     <title>example</title>
 </head>
 <style>
-    img{
+    canvas{
         max-width: 900px;
         max-height: 900px;
     }
 </style>
 <body>
 <input type="file" name="upload" onchange="change(this)" id="upload">
-<div style="margin:20px">Original Pic:<img src="#" id="origin" alt="Original"></div>
-<div style="margin:20px">Modified Pic:<img src="#" alt="Modified" id="Modified"></div>
+
+<div style="margin:20px">Original Pic:<canvas  id="Original" alt="Original"></canvas></div>
+<div style="margin:20px">Modified Pic:<canvas  alt="Modified" id="Modified"></canvas></div>
+
 </body>
 <script type="text/javascript" src="../cameraRepair.js"></script>
 <script type="text/javascript">
     var Modified = document.getElementById('Modified');
-    var origin = document.getElementById('origin');
+    var Original = document.getElementById('Original');
 
     function change(e) {
         var img = e.files[0];
         var Reader = new FileReader;
+
+        var OriginalCtx = Original.getContext('2d');
+        var ModifiedCtx = Modified.getContext('2d');
+
+
         Reader.onload = function (ev) {
-            origin.setAttribute('src', ev.target.result)
+            getImage(ev.target.result,function (OriginalImg) {
+                Original.width = OriginalImg.width;
+                Original.height = OriginalImg.height;
+                OriginalCtx.drawImage(OriginalImg, 0, 0,OriginalImg.width,OriginalImg.height);
+            })
+
         };
         Reader.readAsDataURL(img);
-        CameraRepair(img, function (file) {
-            Modified.setAttribute('src', file)
+
+
+
+        CameraRepair(img,function (file) {
+            getImage(file,function (ModifiedImg) {
+                Modified.width = ModifiedImg.width;
+                Modified.height = ModifiedImg.height;
+                ModifiedCtx.drawImage(ModifiedImg, 0, 0,ModifiedImg.width,ModifiedImg.height);
+            })
+
         })
+    }
+
+    function getImage(dataUrl,call){
+        var image = new Image();
+        image.src = dataUrl;
+        image.onload = function () {
+            call(image)
+        }
     }
 
 
