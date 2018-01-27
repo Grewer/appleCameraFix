@@ -1,13 +1,11 @@
-# cameraRepair
+## cameraRepair
 
-## Description
+### Description
   
 This js is specifically used to modify iPhone photo taken with the photo flip;  
 
 **compatible**
-pc 
------
-![compatible](https://img.shields.io/badge/IE-%3E10-brightgreen.svg)
+pc:![compatible](https://img.shields.io/badge/IE-%3E10-brightgreen.svg)
 
 
 
@@ -16,7 +14,7 @@ Open [example](https://grewer.github.io/appleCameraFix/example/) from iphone
 Upload pictures, you can find the problem;  
 
 
-### Function usage  
+#### Function usage  
 
 **grammar**  
 ```js
@@ -32,17 +30,15 @@ callback | Optional parameters, callback callback (img) to receive file informat
 **Inspiration source**  
 [target](https://stackoverflow.com/questions/7584794/accessing-jpeg-exif-rotation-data-in-javascript-on-the-client-side)  
 
+---
 
-
-## 项目说明 
+### 项目说明 
 
 这个js 是专门用来修改 iPhone 拍照所来带的照片翻转;
 
 
 **兼容**
-pc 
------
-![兼容](https://img.shields.io/badge/IE-%3E10-brightgreen.svg)
+pc:![兼容](https://img.shields.io/badge/IE-%3E10-brightgreen.svg)
 
 
 **查看问题事例**  
@@ -51,7 +47,7 @@ pc
 上传图片,可发现问题所在;  
 
 
-### 用法  
+#### 用法  
 
 **语法**  
 ```js
