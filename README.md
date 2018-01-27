@@ -15,7 +15,6 @@ Open [example](https://grewer.github.io/appleCameraFix/example/) from iphone
 Upload pictures, you can find the problem;  
 
 
-#### Function usage  
 
 **grammar**  
 ```js
@@ -28,8 +27,7 @@ file | Must be a picture file, available fileList access
 isFile | Optional parameters, converted to the file (blob) form, the default is false
 callback | Optional parameters, callback callback (img) to receive file information to be called
 
-**Inspiration source**  
-[target](https://stackoverflow.com/questions/7584794/accessing-jpeg-exif-rotation-data-in-javascript-on-the-client-side)  
+[Inspiration source](https://stackoverflow.com/questions/7584794/accessing-jpeg-exif-rotation-data-in-javascript-on-the-client-side)  
 
 -----
 
@@ -49,7 +47,7 @@ pc:
 上传图片,可发现问题所在;  
 
 
-#### 用法  
+
 
 **语法**  
 ```js
@@ -63,8 +61,7 @@ file | 必须是图片文件, 可用 fileList 获取
 isFile | 可选参数,是否转换成文件(blob)形式,默认为 false 
 callback | 可选参数,回调函数 callback(img) 接收文件信息进行调用  
 
-**灵感来源**:   
-[target](https://stackoverflow.com/questions/7584794/accessing-jpeg-exif-rotation-data-in-javascript-on-the-client-side)  
+[灵感来源](https://stackoverflow.com/questions/7584794/accessing-jpeg-exif-rotation-data-in-javascript-on-the-client-side)  
 
 ## License
 
