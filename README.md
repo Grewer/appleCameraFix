@@ -14,6 +14,24 @@ pc:
 Open [example](https://grewer.github.io/appleCameraFix/example/) from iphone 
 Upload pictures, you can find the problem;  
 
+**Usage**  
+npm:  
+```bash
+npm install applecamerafix;
+```
+
+In main.js or index.js:
+```js
+import applecamerafix;
+```
+or:  
+download and  
+
+```js
+<script src="cameraRepair.js"></script>
+```
+
+You can use it;
 
 
 **grammar**  
@@ -46,7 +64,25 @@ pc:
 通过iphone 打开[example](https://grewer.github.io/appleCameraFix/example/),
 上传图片,可发现问题所在;  
 
+**用法**  
+npm:  
+```bash
+npm install applecamerafix;
+```
 
+在 main.js 或者 index.js 中:
+```js
+import applecamerafix;
+```
+或者:  
+直接下载,在文件中引用 
+
+```js
+<script src="cameraRepair.js"></script>
+```
+
+
+即可使用;
 
 
 **语法**  

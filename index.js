@@ -1,3 +1,3 @@
-import cameraRepair from 'cameraRepair';
+import cameraRepair from './cameraRepair.js';
 
 export default cameraRepair;
