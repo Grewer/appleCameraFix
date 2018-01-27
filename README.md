@@ -17,7 +17,7 @@ Upload pictures, you can find the problem;
 **Usage**  
 npm:  
 ```bash
-npm install applecamerafix;
+npm install applecamerafix
 ```
 
 In main.js or index.js:
@@ -27,7 +27,7 @@ import applecamerafix;
 or:  
 download and  
 
-```js
+```html
 <script src="cameraRepair.js"></script>
 ```
 
@@ -67,7 +67,7 @@ pc:
 **用法**  
 npm:  
 ```bash
-npm install applecamerafix;
+npm install applecamerafix
 ```
 
 在 main.js 或者 index.js 中:
@@ -77,7 +77,7 @@ import applecamerafix;
 或者:  
 直接下载,在文件中引用 
 
-```js
+```html
 <script src="cameraRepair.js"></script>
 ```
 
