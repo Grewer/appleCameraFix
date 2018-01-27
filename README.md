@@ -5,7 +5,8 @@
 This js is specifically used to modify iPhone photo taken with the photo flip;  
 
 **compatible**
-pc:![compatible](https://img.shields.io/badge/IE-%3E10-brightgreen.svg)
+pc:  
+![compatible](https://img.shields.io/badge/IE-%3E10-brightgreen.svg)
 
 
 
@@ -30,7 +31,7 @@ callback | Optional parameters, callback callback (img) to receive file informat
 **Inspiration source**  
 [target](https://stackoverflow.com/questions/7584794/accessing-jpeg-exif-rotation-data-in-javascript-on-the-client-side)  
 
----
+-----
 
 ### 项目说明 
 
@@ -38,7 +39,8 @@ callback | Optional parameters, callback callback (img) to receive file informat
 
 
 **兼容**
-pc:![兼容](https://img.shields.io/badge/IE-%3E10-brightgreen.svg)
+pc:  
+![兼容](https://img.shields.io/badge/IE-%3E10-brightgreen.svg)
 
 
 **查看问题事例**  
