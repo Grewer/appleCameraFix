@@ -103,6 +103,9 @@ callback | 可选参数,回调函数 callback(img) 接收文件信息进行调�
 
 [灵感来源](https://stackoverflow.com/questions/7584794/accessing-jpeg-exif-rotation-data-in-javascript-on-the-client-side)  
 
+
+**[github](https://github.com/Grewer/appleCameraFix)**
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
