@@ -5,8 +5,10 @@
 This js is specifically used to modify iPhone photo taken with the photo flip;  
 
 **compatible**
-pc:  
-![compatible](https://img.shields.io/badge/IE-%3E10-brightgreen.svg)
+
+platform | status  
+------|---------- 
+pc | ![compatible](https://img.shields.io/badge/IE-%3E10-brightgreen.svg)
 
 
 
@@ -55,8 +57,10 @@ callback | Optional parameters, callback callback (img) to receive file informat
 
 
 **兼容**
-pc:  
-![兼容](https://img.shields.io/badge/IE-%3E10-brightgreen.svg)
+
+platform | status  
+------|---------- 
+pc | ![兼容](https://img.shields.io/badge/IE-%3E10-brightgreen.svg)
 
 
 **查看问题事例**  
