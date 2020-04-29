@@ -1,4 +1,4 @@
-## cameraRepair
+# cameraRepair
 
 ### Description
   
@@ -13,8 +13,10 @@ pc | ![compatible](https://img.shields.io/badge/IE-%3E10-brightgreen.svg)
 
 
 **problem case**  
-Open [example](https://grewer.github.io/appleCameraFix/example/) from iphone 
-Upload pictures, you can find the problem;  
+Open [example](https://grewer.github.io/appleCameraFix/example/) from iphone
+Or scan the code 
+<img src="https://grewer.github.io/appleCameraFix/qrcode.png" width="150" height="150">
+Use photo,you can find the problem;  
 
 **Usage**  
 npm:  
@@ -24,13 +26,13 @@ npm install applecamerafix
 
 In main.js or index.js:
 ```js
-import applecamerafix;
+import cameraRepair from 'applecamerafix'
 ```
 or:  
 download and  
 
 ```html
-<script src="cameraRepair.js"></script>
+<script src="cameraRepair.browser.js"></script>
 ```
 
 You can use it;
@@ -38,14 +40,15 @@ You can use it;
 
 **grammar**  
 ```js
-CameraRepair(file, isFile, callback)
+cameraRepair(img).then(function (file) {
+           
+})
 ```  
  
 param | explanation  
 ------|----------  
-file | Must be a picture file, available fileList access 
-isFile | Optional parameters, converted to the file (blob) form, the default is false
-callback | Optional parameters, callback callback (img) to receive file information to be called
+img | Must be a picture file, available fileList access 
+config.resultFile | Optional parameters, converted to the file (blob) form, the default is false
 
 [Inspiration source](https://stackoverflow.com/questions/7584794/accessing-jpeg-exif-rotation-data-in-javascript-on-the-client-side)  
 
@@ -66,7 +69,9 @@ pc | ![兼容](https://img.shields.io/badge/IE-%3E10-brightgreen.svg)
 **查看问题事例**  
  
 通过iphone 打开[example](https://grewer.github.io/appleCameraFix/example/),
-上传图片,可发现问题所在;  
+或者扫码
+<img src="https://grewer.github.io/appleCameraFix/qrcode.png" width="150" height="150">
+使用拍照,可发现问题所在;  
 
 **用法**  
 npm:  
@@ -76,13 +81,13 @@ npm install applecamerafix
 
 在 main.js 或者 index.js 中:
 ```js
-import applecamerafix;
+import cameraRepair from 'applecamerafix'
 ```
 或者:  
 直接下载,在文件中引用 
 
 ```html
-<script src="cameraRepair.js"></script>
+<script src="cameraRepair.browser.js"></script>
 ```
 
 
@@ -91,15 +96,16 @@ import applecamerafix;
 
 **语法**  
 ```js
-CameraRepair(file, isFile, callback)
+cameraRepair(img).then(function (file) {
+           
+})
 ```
 
 
 参数 | 解释  
 ------|----------  
-file | 必须是图片文件, 可用 fileList 获取  
-isFile | 可选参数,是否转换成文件(blob)形式,默认为 false 
-callback | 可选参数,回调函数 callback(img) 接收文件信息进行调用  
+img | 必须是图片文件, 可用 fileList 获取  
+config.resultFile | 可选参数,是否转换成文件(blob)形式,默认为 false 
 
 [灵感来源](https://stackoverflow.com/questions/7584794/accessing-jpeg-exif-rotation-data-in-javascript-on-the-client-side)  
 

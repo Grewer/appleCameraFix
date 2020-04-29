@@ -5,7 +5,7 @@
     <title>example</title>
 </head>
 <style>
-    canvas{
+    canvas {
         max-width: 900px;
         max-height: 900px;
     }
@@ -13,15 +13,20 @@
 <body>
 <input type="file" name="upload" onchange="change(this)" id="upload">
 
-<div style="margin:20px">Original Pic:<canvas  id="Original" alt="Original"></canvas></div>
-<div style="margin:20px">Modified Pic:<canvas  alt="Modified" id="Modified"></canvas></div>
+<div style="margin:20px">Original Pic:
+    <canvas id="Original" alt="Original"></canvas>
+</div>
+<div style="margin:20px">Modified Pic:
+    <canvas alt="Modified" id="Modified"></canvas>
+</div>
 
 </body>
-<script type="text/javascript" src="../build/cameraRepair.js"></script>
+<script type="text/javascript" src="../build/cameraRepair.browser.js"></script>
 <script type="text/javascript">
     var Modified = document.getElementById('Modified');
     var Original = document.getElementById('Original');
-    console.log(window.CameraRepair)
+    console.log(window.cameraRepair)
+
     function change(e) {
         var img = e.files[0];
         var Reader = new FileReader;
@@ -29,29 +34,30 @@
         var OriginalCtx = Original.getContext('2d');
         var ModifiedCtx = Modified.getContext('2d');
 
-        console.log(img)
         Reader.onload = function (ev) {
-            getImage(ev.target.result,function (OriginalImg) {
+            getImage(ev.target.result, function (OriginalImg) {
                 Original.width = OriginalImg.width;
                 Original.height = OriginalImg.height;
-                OriginalCtx.drawImage(OriginalImg, 0, 0,OriginalImg.width,OriginalImg.height);
+                OriginalCtx.drawImage(OriginalImg, 0, 0, OriginalImg.width, OriginalImg.height);
             })
 
         };
         Reader.readAsDataURL(img);
 
 
-
-        CameraRepair(img,function (file) {
+        cameraRepair(img).then(function (file) {
+            console.log('fix result', file)
             getImage(file, function (ModifiedImg) {
                 Modified.width = ModifiedImg.width;
                 Modified.height = ModifiedImg.height;
-                ModifiedCtx.drawImage(ModifiedImg, 0, 0,ModifiedImg.width,ModifiedImg.height);
+                ModifiedCtx.drawImage(ModifiedImg, 0, 0, ModifiedImg.width, ModifiedImg.height);
             })
         })
+
+        // or use async/await
     }
 
-    function getImage(dataUrl,call){
+    function getImage(dataUrl, call) {
         var image = new Image();
         image.src = dataUrl;
         image.onload = function () {

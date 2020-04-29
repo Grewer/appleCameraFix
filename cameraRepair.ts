@@ -1,7 +1,7 @@
 var canvas = document.createElement('canvas')
 var ctx = canvas.getContext('2d')
 
-function getOrientation(file: Blob, callback: (file: number) => void) {
+function getOrientation(file: Blob, callback: (file: number) => void, reject: (value: any) => void) {
   const reader = new FileReader()
   reader.onload = function (e: ProgressEvent<EventTarget & { result: any }>) {
     const view = new DataView(e.target.result as ArrayBuffer)
@@ -25,12 +25,10 @@ function getOrientation(file: Blob, callback: (file: number) => void) {
     }
     return callback(-1)
   }
+  reader.onerror = ev => {
+    reject(ev)
+  }
   reader.readAsArrayBuffer(file)
-}
-
-
-function checkIsFunc(obj: object | Function) {
-  return Object.prototype.toString.call(obj) === '[object Function]'
 }
 
 function dataURLToBlob(dataurl: string) {
@@ -44,10 +42,10 @@ function dataURLToBlob(dataurl: string) {
 }
 
 
-function cameraRepair(img: File, config: {
+function cameraRepair(img: File, config?: {
   resultFile: boolean
 }): Promise<string | Blob> {
-  const { resultFile } = config
+  const { resultFile } = config || {}
   return new Promise((resolve, reject) => {
     getOrientation(img, function (orientation) {
       if (orientation === -2) {
@@ -99,9 +97,12 @@ function cameraRepair(img: File, config: {
         }
 
       }
+      Reader.onerror = ev => {
+        reject(ev)
+      }
       Reader.readAsDataURL(img)
 
-    })
+    }, reject)
   })
 }
 
