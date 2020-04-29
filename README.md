@@ -21,7 +21,7 @@ Use photo,you can find the problem;
 **Usage**  
 npm:  
 ```bash
-npm install applecamerafix
+npm install @grewer/camerarepair
 ```
 
 In main.js or index.js:
@@ -76,7 +76,7 @@ pc | ![兼容](https://img.shields.io/badge/IE-%3E10-brightgreen.svg)
 **用法**  
 npm:  
 ```bash
-npm install applecamerafix
+npm install @grewer/camerarepair
 ```
 
 在 main.js 或者 index.js 中:

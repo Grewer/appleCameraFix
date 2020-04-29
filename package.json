@@ -1,10 +1,11 @@
 {
-  "name": "applecamerafix",
-  "version": "0.1.0",
+  "name": "@grewer/camerarepair",
+  "version": "0.1.1",
   "main": "build/cameraRepair.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "publish": "npm publish --access public"
   },
   "author": "grewer",
   "license": "MIT",
