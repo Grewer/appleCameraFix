@@ -17,11 +17,11 @@
 <div style="margin:20px">Modified Pic:<canvas  alt="Modified" id="Modified"></canvas></div>
 
 </body>
-<script type="text/javascript" src="../cameraRepair.js"></script>
+<script type="text/javascript" src="../build/cameraRepair.js"></script>
 <script type="text/javascript">
     var Modified = document.getElementById('Modified');
     var Original = document.getElementById('Original');
-
+    console.log(window.CameraRepair)
     function change(e) {
         var img = e.files[0];
         var Reader = new FileReader;
@@ -29,7 +29,7 @@
         var OriginalCtx = Original.getContext('2d');
         var ModifiedCtx = Modified.getContext('2d');
 
-
+        console.log(img)
         Reader.onload = function (ev) {
             getImage(ev.target.result,function (OriginalImg) {
                 Original.width = OriginalImg.width;
@@ -43,12 +43,11 @@
 
 
         CameraRepair(img,function (file) {
-            getImage(file,function (ModifiedImg) {
+            getImage(file, function (ModifiedImg) {
                 Modified.width = ModifiedImg.width;
                 Modified.height = ModifiedImg.height;
                 ModifiedCtx.drawImage(ModifiedImg, 0, 0,ModifiedImg.width,ModifiedImg.height);
             })
-
         })
     }
 

@@ -1,7 +1,25 @@
 {
   "name": "applecamerafix",
-  "version": "0.0.3",
-  "main": "index.js",
-  "author":"grewer",
-  "license": "MIT"
+  "version": "0.1.0",
+  "main": "build/cameraRepair.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp"
+  },
+  "author": "grewer",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grewer/appleCameraFix"
+  },
+  "homepage": "https://github.com/Grewer/appleCameraFix",
+  "keywords": [
+    "apple",
+    "camera",
+    "photo",
+    "orientation"
+  ],
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
 }
