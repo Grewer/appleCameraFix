@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh">
 <head>
+    <meta charset="UTF-8">
     <title>example</title>
 </head>
 <style>
@@ -13,10 +13,10 @@
 <body>
 <input type="file" name="upload" onchange="change(this)" id="upload">
 
-<div style="margin:20px">Original Pic:
+<div style="margin:20px">(原图片)Original Pic:
     <canvas id="Original" alt="Original"></canvas>
 </div>
-<div style="margin:20px">Modified Pic:
+<div style="margin:20px">(更正后)Modified Pic:
     <canvas alt="Modified" id="Modified"></canvas>
 </div>
 
@@ -26,6 +26,9 @@
     var Modified = document.getElementById('Modified');
     var Original = document.getElementById('Original');
     console.log(window.cameraRepair)
+    if(!window.Promise){
+        alert('browser not support Promise')
+    }
 
     function change(e) {
         var img = e.files[0];
