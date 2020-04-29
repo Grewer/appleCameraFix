@@ -26,7 +26,7 @@ npm install @grewer/camerarepair
 
 In main.js or index.js:
 ```js
-import cameraRepair from 'applecamerafix'
+import cameraRepair from '@grewer/camerarepair'
 ```
 or:  
 download and  
@@ -81,7 +81,7 @@ npm install @grewer/camerarepair
 
 在 main.js 或者 index.js 中:
 ```js
-import cameraRepair from 'applecamerafix'
+import cameraRepair from '@grewer/camerarepair'
 ```
 或者:  
 直接下载,在文件中引用 
